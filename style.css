@@ -978,6 +978,98 @@ ul, ol {
   object-fit: cover;
 }
 
+/* --- Process Timeline (Visual Zigzag) --- */
+.process-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  margin-top: 60px;
+}
+
+.process-timeline-step {
+  display: flex;
+  gap: 48px;
+  align-items: center;
+}
+
+.process-timeline-step.reverse {
+  flex-direction: row-reverse;
+}
+
+.process-timeline-image {
+  flex: 0 0 45%;
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+}
+
+.process-timeline-image img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s var(--ease-out);
+}
+
+.process-timeline-step:hover .process-timeline-image img {
+  transform: scale(1.05);
+}
+
+.step-number-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  width: 48px;
+  height: 48px;
+  background: rgba(212, 175, 55, 0.9);
+  backdrop-filter: blur(8px);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--deep-green);
+}
+
+.process-timeline-content {
+  flex: 1;
+}
+
+.process-timeline-content h4 {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+
+.process-timeline-content p {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.75;
+}
+
+@media (max-width: 768px) {
+  .process-timeline-step,
+  .process-timeline-step.reverse {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .process-timeline-image {
+    flex: none;
+    width: 100%;
+  }
+
+  .process-timeline-content h4 {
+    font-size: 1.25rem;
+  }
+}
+
+/* Legacy process step styles kept for compatibility */
 .process-steps {
   display: flex;
   flex-direction: column;
@@ -1699,7 +1791,8 @@ body.lang-gu .lang-en {
 
   .challenge-grid,
   .solution-grid,
-  .pitch-grid {
+  .pitch-grid,
+  .concept-grid {
     grid-template-columns: 1fr;
     gap: 48px;
   }
